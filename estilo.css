@@ -1,0 +1,84 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0px;
+    padding: 0px;
+}
+
+#navbar {
+    position: fixed;
+    width: 12em;
+    height: 100vh;
+    padding: 1em;
+    background-color: darkgray;
+}
+
+#navbar ul {
+    list-style-type: none;
+}
+
+#navbar a {
+    text-decoration: none;
+    padding: 1em;  
+}
+
+.container {
+    width: 80rem;
+    padding-top: 1.5rem;
+    margin-left: 6rem;
+}
+
+#busca {
+    margin-left: 6.5rem;
+    width: 30rem;
+}
+
+.cards {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card {
+    width: 15rem;
+    height: 20rem;
+    margin-right: 1rem;
+}
+
+.card img{
+    width: 15rem;
+    height: 15rem;
+}
+
+.cards-redondo {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.cards-redondo img {
+    border-radius: 50%;
+}
+
+
+#redondo {
+    /* width: 10rem; */
+}
+
+#redondo img {
+    width: 10rem;
+    height: 10rem;
+}
+
+@media (max-width: 800px){
+    .cards {
+        margin-top: 0rem;
+        flex-wrap: wrap;
+    }
+    .card {
+        margin-right: 1rem;
+        margin-top: 1rem;
+        font-size: 0.65rem;
+    }
+}
