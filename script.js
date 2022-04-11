@@ -23,24 +23,34 @@ var authOptions = {
 };
 
 var token = "";
-exports.getSpotifyEp = function () {
-  request.post(authOptions, function (error, response, body) {
-    if (!error && response.statusCode === 200) {
-      token = body.access_token;
-      console.log(token);
-      var artista = {
-        url: urlEpisodio,
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-        json: true,
-      };
-
-      request.get(artista, function (error, response, body) {
-        console.table(body.genres);
+exports.getSpotifyEp = function (url) {
+    return new Promise((resolve, reject) => {
+        request.post(authOptions, function (error, response, body) {
+          if (!error && response.statusCode === 200) {
+            token = body.access_token;
+            console.log(token);
+            var artista = {
+              url: 'https://api.spotify.com/v1/shows/' + url + '/episodes?market=BR',
+              headers: {
+                Authorization: "Bearer " + token,
+              },
+              json: true,
+            };
+    
+            request.get(artista, function (error, response, body) {
+              if (error){ return reject(error);}
+            //   console.log(body);
+              resolve(body);
+              body.items.forEach((element) => {
+                  console.log(element);
+                  
+                }
+              
+              );
+            });
+          }
+        });
       });
-    }
-  });
 };
 
 exports.getSpotifyShow = function () {
@@ -60,13 +70,15 @@ exports.getSpotifyShow = function () {
         request.get(artista, function (error, response, body) {
           if (error) return reject(error);
           else resolve(body.shows.items);
-        //   body.shows.items.forEach((element) => {
-        //     if (!element.explicit) {
-        //       // console.log(element);
+          body.shows.items.forEach((element) => {
+            if (!element.explicit) {
+            //   console.log(element.name);
+            //   console.log(element.uri);
+            //   console.log(element);
               
-        //     }
-        //   }
-        //   );
+            }
+          }
+          );
         });
       }
     });

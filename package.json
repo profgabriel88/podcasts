@@ -19,6 +19,7 @@
   "homepage": "https://github.com/profgabriel88/podcasts#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "bootstrap-icons": "^1.8.1",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "request": "^2.88.2"

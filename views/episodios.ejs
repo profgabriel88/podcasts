@@ -1,0 +1,17 @@
+<%- include ('partials/header.ejs') %>
+  <body>
+    <%- include ('partials/navbar.ejs') %>
+
+    <div class="container">
+        <% episodios.items.forEach( episodio => { %>
+          <h5><%=episodio.name%></h5>
+
+          <p><%=episodio.release_date%></p>
+          <p><%=episodio.duration%></p>
+          <p><%=episodio.description%></p>
+
+        <% }) %> 
+    </div>
+
+  </body>
+  </html>
