@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="estilo.css" />
+    <link rel="stylesheet" href="css/estilo.css" />
     <title>Document</title>
   </head>
   <body>
@@ -50,42 +50,20 @@
       <div class="container">
         <h5>Em alta</h5>
         <div class="cards">
-          <div class="card">
-            <img src="goku.jpg" alt="" class="card-img" />
-            <div class="card-img-overlay">
-              <p class="card-text"></p>
+          <% podcasts.forEach( podcast => { %>
+            <% if (!podcast.explicit) { %>
+            <div class="card">
+              <img src="<%=podcast.images[0].url%>" alt="" class="card-img" />
+              <div class="card-img-overlay">
+                <p class="card-text"></p>
+              </div>
+              <div class="card-footer bg-transparent">
+                <%=podcast.name%>
+                <!-- <%=podcast.description%> -->
+              </div>
             </div>
-            <div class="card-footer bg-transparent">
-              Confira aqui tudo sobre DBZ...
-            </div>
-          </div>
-          <div class="card">
-            <img src="digimon.jpg" alt="" class="card-img" />
-            <div class="card-img-overlay">
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer bg-transparent">
-              Por que Digimon é melhor que Pokemon?
-            </div>
-          </div>
-          <div class="card">
-            <img src="goku.jpg" alt="" class="card-img" />
-            <div class="card-img-overlay">
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer bg-transparent">
-              Confira aqui tudo sobre DBZ...
-            </div>
-          </div>
-          <div class="card">
-            <img src="digimon.jpg" alt="" class="card-img" />
-            <div class="card-img-overlay">
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer bg-transparent">
-              Por que Digimon é melhor que Pokemon?
-            </div>
-          </div>
+            <%}%>
+          <% }) %> 
         </div>
       </div>
 
@@ -93,7 +71,7 @@
           <h5>Sugestões para você</h5>
           <div class="cards-redondo">
             <div id="redondo" class="card border-light  text-center">
-              <img src="goku.jpg" alt="" class="card-img mx-auto" />
+              <img src="img/goku.jpg" alt="" class="card-img mx-auto" />
               <div class="card-img-overlay">
                 <p class="card-text"></p>
               </div>
@@ -102,7 +80,7 @@
               </div>
             </div>
             <div id="redondo" class="card border-light  text-center">
-              <img src="digimon.jpg" alt="" class="card-img mx-auto" />
+              <img src="img/digimon.jpg" alt="" class="card-img mx-auto" />
               <div class="card-img-overlay">
                 <p class="card-text"></p>
               </div>
