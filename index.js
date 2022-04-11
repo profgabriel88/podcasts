@@ -31,7 +31,14 @@ app.get("/episodios/:id", (req, res) => {
   });
 });
 
+app.get('/tocar/:url', (req, res) => {
+    console.log(req.params.url);
+    spotify.tocar(req.params.url);
+})
+
 app.listen(3000, (erro) => {
   if (erro) console.log(erro);
   else console.log("Servidor Rodando");
 });
+
+

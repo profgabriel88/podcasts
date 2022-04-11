@@ -24,33 +24,36 @@ var authOptions = {
 
 var token = "";
 exports.getSpotifyEp = function (url) {
-    return new Promise((resolve, reject) => {
-        request.post(authOptions, function (error, response, body) {
-          if (!error && response.statusCode === 200) {
-            token = body.access_token;
-            console.log(token);
-            var artista = {
-              url: 'https://api.spotify.com/v1/shows/' + url + '/episodes?market=BR',
-              headers: {
-                Authorization: "Bearer " + token,
-              },
-              json: true,
-            };
-    
-            request.get(artista, function (error, response, body) {
-              if (error){ return reject(error);}
-            //   console.log(body);
-              resolve(body);
-            //   body.items.forEach((element) => {
-            //       console.log(element);
-                  
-            //     }
-              
-            //   );
-            });
+  return new Promise((resolve, reject) => {
+    request.post(authOptions, function (error, response, body) {
+      if (!error && response.statusCode === 200) {
+        token = body.access_token;
+        console.log(token);
+        var artista = {
+          url:
+            "https://api.spotify.com/v1/shows/" + url + "/episodes?market=BR",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          json: true,
+        };
+
+        request.get(artista, function (error, response, body) {
+          if (error) {
+            return reject(error);
           }
+          //   console.log(body);
+          resolve(body);
+          //   body.items.forEach((element) => {
+          //       console.log(element);
+
+          //     }
+
+          //   );
         });
-      });
+      }
+    });
+  });
 };
 
 exports.getSpotifyShow = function () {
@@ -72,15 +75,42 @@ exports.getSpotifyShow = function () {
           else resolve(body.shows.items);
           body.shows.items.forEach((element) => {
             if (!element.explicit) {
-            //   console.log(element.name);
-            //   console.log(element.uri);
-            //   console.log(element);
-              
+              //   console.log(element.name);
+              //   console.log(element.uri);
+              //   console.log(element);
             }
-          }
-          );
+          });
         });
       }
     });
+  });
+};
+
+exports.tocar = function (url) {
+  request.post(authOptions, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      token = body.access_token;
+      console.log(token);
+      var artista = {
+        url: urlBusca,
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        json: true,
+      };
+
+      var tocar = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        json: true,
+        url: "https://api.spotify.com/v1/me/player/play/",
+        context_uri: url,
+      };
+      request.put(tocar, (error, response, body) => {
+        if (!error) console.log(body);
+        else console.log(error);
+      });
+    }
   });
 };
