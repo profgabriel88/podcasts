@@ -41,12 +41,12 @@ exports.getSpotifyEp = function (url) {
               if (error){ return reject(error);}
             //   console.log(body);
               resolve(body);
-              body.items.forEach((element) => {
-                  console.log(element);
+            //   body.items.forEach((element) => {
+            //       console.log(element);
                   
-                }
+            //     }
               
-              );
+            //   );
             });
           }
         });

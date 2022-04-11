@@ -1,0 +1,13 @@
+<div class="container">
+  <% episodios.items.forEach( episodio => { %>
+    <hr>
+  <img style="margin-bottom: 1rem;" src="<%=episodio.images[1].url%>" alt="" width="20%" height="auto" />
+
+  <h5><%=episodio.name%></h5>
+
+  <p><%=episodio.release_date%></p>
+  <p><%=episodio.duration%></p>
+  <p><%=episodio.description%></p>
+  <% }) %>
+  <hr>
+</div>
